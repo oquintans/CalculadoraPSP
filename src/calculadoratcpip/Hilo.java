@@ -11,7 +11,7 @@ package calculadoratcpip;
  */
 public class Hilo extends Thread {
 
-    private int numH;
+    private final int numH;
 
     public Hilo(int numH) {
         this.numH = numH;

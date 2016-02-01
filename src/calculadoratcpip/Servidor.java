@@ -49,7 +49,7 @@ public class Servidor {
 
             is = newSocket.getInputStream();
             os = newSocket.getOutputStream();
-            
+
             byte[] mensaje = new byte[25];
             is.read(mensaje);
             msj = new String(mensaje).split("-");
@@ -57,18 +57,22 @@ public class Servidor {
             System.out.println("Op2: " + msj[1]);
             System.out.println("Operación: " + msj[2]);
             System.out.println("Codigo: " + msj[3]);
-            
+
             int ope = Integer.parseInt(msj[2]);
             if (ope == 1) {
+                System.out.println(msj[0] + "+" + msj[1]);
                 System.out.println("Resultado: " + (Integer.valueOf(msj[0]) + Integer.valueOf(msj[1])));
             }
             if (ope == 2) {
+                System.out.println(msj[0] + "-" + msj[1]);
                 System.out.println("Resultado: " + (Integer.valueOf(msj[0]) - Integer.valueOf(msj[1])));
             }
             if (ope == 3) {
+                System.out.println(msj[0] + "*" + msj[1]);
                 System.out.println("Resultado: " + (Integer.valueOf(msj[0]) * Integer.valueOf(msj[1])));
             }
             if (ope == 4) {
+                System.out.println(msj[0] + "/" + msj[1]);
                 System.out.println("Resultado: " + (Integer.valueOf(msj[0]) / Integer.valueOf(msj[1])));
             }
 
