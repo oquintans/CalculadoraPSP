@@ -42,24 +42,19 @@ public class Cliente {
         }
     }
 
-    public void msj() {
+    public void msj(int code) {
         try {
-            String close;
+            System.out.println("Enviando mensaje");
+            String op1 = JOptionPane.showInputDialog("Numero 1:\n");
+            op1 = op1 + "-";
+            String op2 = JOptionPane.showInputDialog("Numero 2:\n");
+            op2 = op2 + "-";
+            String ope = JOptionPane.showInputDialog("Operación:\n1=suma\n2=resta\n3=producto\n4=division");
+            ope = ope + "-";
+            String msj = op1 + op2 + ope + String.valueOf(code) + "-";
+            os.write(msj.getBytes());
+            System.out.println("Mensaje enviado");
 
-            do {
-                System.out.println("Enviando mensaje");
-                String op1 = JOptionPane.showInputDialog("Numero 1:\n");
-                op1 = op1 + "-";
-                String op2 = JOptionPane.showInputDialog("Numero 2:\n");
-                op2 = op2 + "-";
-                String ope = JOptionPane.showInputDialog("Operación:\n1=suma\n2=resta\n3=producto\n4=division");
-                ope = ope + "-";
-                close = JOptionPane.showInputDialog("Cerrar?\n Y/N");
-                close = close + "-";
-                String msj = op1 + op2 + ope + close;
-                os.write(msj.getBytes());
-                System.out.println("Mensaje enviado");
-            } while (close.equalsIgnoreCase("n"));
         } catch (IOException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }

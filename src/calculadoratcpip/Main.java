@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package calculadoratcpip;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,14 +18,16 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Servidor sv= new Servidor();
-        Cliente cl= new Cliente();
+        Servidor sv = new Servidor();
         sv.conexion();
-        cl.conexion();
-        cl.msj();
-        sv.read();
-        cl.close();
+        int bucle = Integer.parseInt(JOptionPane.showInputDialog("Numero de clientes: "));
+        for (int i = 1; i <= bucle; i++) {
+            Hilo h = new Hilo(i);
+            h.start();
+            sv.read();
+        }
+
         sv.close();
     }
-    
+
 }
